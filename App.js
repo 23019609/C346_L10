@@ -117,7 +117,7 @@ const styles = StyleSheet.create({
         flex: 0,
         justifyContent: "center",
         paddingLeft: 10,
-        paddingRight:20,
+        paddingRight: 20,
     },
 });
 
@@ -149,7 +149,7 @@ const App = () => {
                     item.PaintingName.toLowerCase().includes(text) ||
                     item.Artist.toLowerCase().includes(text) ||
                     item.Location.toLowerCase().includes(text) ||
-                    item.City.toLowerCase().includes(text)
+                    item.City.toLowerCase().includes(text),
             );
             setMyData(myFilteredData);
         } else {
@@ -161,14 +161,20 @@ const App = () => {
         return (
             <View style={styles.parentContainer}>
                 <View style={styles.iconStyle}>
-                    <Text style={{color: "#D4AF37", fontWeight: "bold"}}>
+                    <Text style={{ color: "#D4AF37", fontWeight: "bold" }}>
                         <Icon name="medal" color="gold" /> {item.Rank}
                     </Text>
                 </View>
                 <View style={styles.textContainer}>
                     <Text style={styles.titleStyle}>{item.PaintingName}</Text>
-                    <Text style={styles.textStyle}><Icon name="paintbrush" color="#808080"/> By {item.Artist} ({item.Year})</Text>
-                    <Text style={styles.textStyle}><Icon name="location-dot" color="#808080" /> {item.City}, {item.Location}</Text>
+                    <Text style={styles.textStyle}>
+                        <Icon name="paintbrush" color="#808080" /> By{" "}
+                        {item.Artist} ({item.Year})
+                    </Text>
+                    <Text style={styles.textStyle}>
+                        <Icon name="location-dot" color="#808080" /> {item.City}
+                        , {item.Location}
+                    </Text>
                 </View>
             </View>
         );
@@ -191,7 +197,8 @@ const App = () => {
                 onChangeText={(text) => {
                     FilterData(text);
                 }}
-                placeholder= "Filter By Painting, Artist, or Location"
+                placeholder="Filter By Painting, Artist, or Location"
+                multiline={true}
             />
             <FlatList data={mydata} renderItem={renderItem} />
         </View>
